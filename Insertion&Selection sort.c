@@ -40,17 +40,23 @@ void selection()
    }
     for(i=0;i<n-1;i++)
     {
-       display(a,n);
+         int min = i;
 
-        for(j=i+1;j<n;j++)
+        for (j=i+1;j<n;j++)
         {
-            if(a[i]>a[j])
+            if(a[min] > a[j])
             {
-             temp=a[i];
-             a[i]=a[j];
-             a[j]=temp;
+                min = j;
             }
         }
+            if(min!=i)
+            {
+                temp = a[i];
+                a[i] = a[min];
+                a[min] = temp;
+            }
+
+             display(a,n);
     }
 }
 void display(int a[],int n)
