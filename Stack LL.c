@@ -19,7 +19,6 @@ void push()
 
     pnew->data = value;
 
-
     if(top==NULL)
     {
        pnew->next = NULL;
@@ -30,23 +29,31 @@ void push()
 }
 
 void pop() {
-    struct ll_node *temp = top;
+    struct ll_node *help_ptr = top;
     if(top==NULL) {
             printf("Stack Underflow");
     }
-        temp->data = top->data;
+        help_ptr->data = top->data;
         top=top->next;
-        free(temp);
+        free(help_ptr);
 return;
     }
 
 
 void display()
 {
-    while(top!=NULL) {
-        printf("%d\n",top->data);
-        top=top->next;
+    struct ll_node *help_ptr = top;
+
+    if (help_ptr==NULL)
+    {
+       printf("\nStack Empty");
     }
+    else{
+        printf("%d\n",help_ptr->data);
+        help_ptr=help_ptr->next;
+    }
+
+    return;
 }
 
 int main()
@@ -54,7 +61,7 @@ int main()
     int ch;
     top = NULL;
     do{
-    printf("\n1.INSERT\n2.DELETE\n3.DISPLAY\n4.EXIT\n");
+    printf("\n1.PUSH\n2.POP\n3.DISPLAY\n4.EXIT\n");
     printf("Enter your choice:");
     scanf("%d",&ch);
     switch(ch)
